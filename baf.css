@@ -1,0 +1,415 @@
+/* Définition des variables pour la cohérence des couleurs */
+:root {
+    --color-dark-navy: #1A2430; /* Arrière-plan principal */
+    --color-medium-navy: #263240; /* Arrière-plan secondaire (sections) */
+    --color-blue-accent: #4AB8FF; /* Couleur d'accentuation (boutons, icônes) */
+    --color-text-light: #F0F4F8; /* Texte clair */
+    --color-text-fade: #AAB9C4; /* Texte estompé/secondaire */
+    --color-shadow: rgba(0, 0, 0, 0.4); /* Ombre pour les éléments */
+}
+
+/* Base et Typographie */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-dark-navy);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: var(--color-blue-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-text-light);
+}
+
+.section {
+    padding: 80px 10%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-blue-accent);
+    border-bottom: 3px solid var(--color-blue-accent);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+/* --- Barre de Navigation --- */
+.navbar {
+    background-color: var(--color-medium-navy);
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px var(--color-shadow);
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.navbar nav a {
+    margin-left: 25px;
+    font-weight: 400;
+    font-size: 1.1em;
+}
+
+/* Cache l'icône hamburger par défaut sur les grands écrans */
+.menu-toggle {
+    display: none; 
+}
+
+
+/* --- Boutons Génériques --- */
+.btn {
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 15px;
+    display: inline-block;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.primary-btn {
+    background-color: var(--color-blue-accent);
+    color: var(--color-dark-navy);
+    border-color: var(--color-blue-accent);
+}
+
+.primary-btn:hover {
+    background-color: transparent;
+    color: var(--color-blue-accent);
+    box-shadow: 0 0 15px var(--color-blue-accent);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-blue-accent);
+    color: var(--color-dark-navy);
+}
+
+/* --- Section Héro (Accueil) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; /* Pour compenser la navbar fixe */
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-content .subtitle {
+    font-size: 1.5em;
+    color: var(--color-text-fade);
+    margin-bottom: 30px;
+}
+
+/* --- Section À Propos --- */
+.about-content {
+    display: flex;
+    align-items: flex-start; 
+    gap: 50px;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 5px solid var(--color-blue-accent);
+    box-shadow: 0 0 20px rgba(74, 184, 255, 0.6);
+    margin-right: 25px;
+}
+
+.text-block {
+    flex-grow: 1; 
+}
+
+.text-block p {
+    margin-bottom: 15px;
+    color: var(--color-text-fade);
+}
+
+/* --- Section Compétences --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.skill-item {
+    background-color: var(--color-medium-navy);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--color-medium-navy);
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--color-shadow), 0 0 10px var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+}
+
+.skill-icon {
+    font-size: 3em;
+    color: var(--color-blue-accent);
+    margin-bottom: 10px;
+}
+
+/* --- Section Projets --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: var(--color-medium-navy);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px var(--color-shadow);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px var(--color-shadow);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card h3 {
+    padding: 15px 15px 0;
+    color: var(--color-blue-accent);
+}
+
+.project-card p {
+    padding: 10px 15px;
+    color: var(--color-text-fade);
+}
+
+.project-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-dark-navy);
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.project-link:hover {
+    background-color: var(--color-blue-accent);
+    color: var(--color-dark-navy);
+}
+
+/* --- Section Contact --- */
+.contact-section {
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    color: var(--color-text-fade);
+}
+
+.contact-info strong {
+    color: var(--color-text-light);
+}
+
+.email-link {
+    margin-top: 30px;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links a {
+    font-size: 2em;
+    margin: 0 15px;
+    transition: transform 0.3s;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+    color: var(--color-blue-accent);
+}
+
+/* --- Pied de Page --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-medium-navy);
+    color: var(--color-text-fade);
+    border-top: 1px solid var(--color-dark-navy);
+}
+
+/* --- Media Queries pour le Responsive Design --- */
+
+/* Styles pour les tablettes et les mobiles (jusqu'à 768px) */
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 5%; /* Réduire le padding horizontal pour les petits écrans */
+    }
+
+    .section-title {
+        font-size: 2em; /* Réduire la taille du titre de section */
+        margin-bottom: 30px; /* Ajuster la marge */
+        border-bottom-width: 2px; /* Rendre la bordure un peu plus fine */
+    }
+
+    /* Section Héro */
+    .hero-content h1 {
+        font-size: 2.8em; /* Ajuster la taille du titre principal */
+    }
+    .hero-content .subtitle {
+        font-size: 1.2em; /* Ajuster la taille du sous-titre */
+    }
+    .hero-content .btn {
+        padding: 8px 20px; /* Réduire la taille des boutons */
+        font-size: 0.9em;
+        margin-right: 10px;
+    }
+
+    /* Navigation (Hamburger Menu) */
+    .navbar {
+        flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+        padding: 15px 5%; /* Ajuster le padding */
+    }
+    .navbar nav {
+        display: none; /* Cache la navigation par défaut sur mobile */
+        width: 100%; /* Occupe toute la largeur */
+        flex-direction: column; /* Les liens s'empilent verticalement */
+        background-color: var(--color-medium-navy); /* Assure un fond si le menu s'ouvre */
+        padding-bottom: 10px;
+    }
+    /* Classe à activer avec JS pour montrer le menu */
+    .navbar nav.active { 
+        display: flex;
+    }
+    .navbar nav a {
+        margin: 10px 0; /* Espacement vertical entre les liens */
+        padding: 5px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Séparateur léger */
+    }
+    .navbar nav a:last-child {
+        border-bottom: none;
+    }
+
+    /* Affiche l'icône hamburger sur mobile */
+    .menu-toggle {
+        display: block; 
+        font-size: 2em;
+        cursor: pointer;
+        color: var(--color-blue-accent);
+        order: 2; /* Pour positionner à droite si le logo est à gauche */
+        margin-left: auto; /* Pousse l'icône à droite */
+    }
+    /* Garde le logo à gauche sur mobile */
+    .navbar .logo {
+        order: 1; 
+    }
+
+    /* Section À Propos */
+    .about-content {
+        flex-direction: column; /* Empile l'image et le texte verticalement */
+        text-align: center; /* Centre le texte */
+        align-items: center; /* Centre les éléments flex */
+        gap: 30px; /* Réduit l'espace entre l'image et le texte */
+    }
+    .profile-pic {
+        margin-right: 0; /* Supprime la marge droite */
+        margin-bottom: 30px; /* Ajoute une marge en bas pour séparer du texte */
+        width: 200px; /* Réduit un peu la taille de la photo de profil */
+        height: 200px;
+    }
+
+    /* Grilles (Compétences et Projets) */
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        gap: 20px; /* Réduire l'espacement */
+    }
+
+    /* Formulaire de contact */
+    #contact-form {
+        gap: 15px; /* Réduire l'espacement entre les champs */
+    }
+    #contact-form input, #contact-form textarea {
+        padding: 12px; /* Réduire un peu le padding des champs */
+    }
+
+    /* Liens sociaux */
+    .social-links a {
+        font-size: 1.8em; /* Réduire la taille des icônes sociales */
+        margin: 0 10px;
+    }
+}
+
+/* Styles pour les petits mobiles (jusqu'à 480px) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8em;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content .subtitle {
+        font-size: 1em;
+    }
+    .btn {
+        padding: 7px 18px;
+        font-size: 0.8em;
+        margin-right: 8px;
+    }
+    /* Masque un des boutons si nécessaire sur très petit écran pour éviter le débordement */
+    .hero-content .secondary-btn { 
+        display: none; 
+    }
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+}
