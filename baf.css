@@ -1,3 +1,4 @@
+
 :root {
     --color-dark-navy: #1A2430;
     --color-medium-navy: #263240;
@@ -27,31 +28,30 @@ body {
 }
 
 main {
-    padding-top: 80px;
+    /* La navbar est fixed, on utilise le padding-top sur main ou un body padding */
+    padding-top: 80px; 
 }
 
+/* Styles pour les liens Bootstrap pour conserver la couleur accent */
+.navbar-brand,
+.nav-link,
 a {
-    color: var(--color-blue-accent);
+    color: var(--color-blue-accent) !important;
     text-decoration: none;
     transition: color 0.3s;
 }
 
+.navbar-brand:hover,
+.nav-link:hover,
 a:hover {
-    color: var(--color-text-light);
+    color: var(--color-text-light) !important;
 }
 
-.section {
-    padding: 80px 5%;
-    max-width: 1200px;
-    margin: auto;
-}
-
+/* Styles des titres de section */
 .section-title {
     font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 50px;
     color: var(--color-blue-accent);
-    display: inline-block;
+    display: block; /* Pour centrer le titre avec text-center */
     padding-bottom: 5px;
     border-bottom: 3px solid var(--color-blue-accent);
     width: fit-content;
@@ -59,26 +59,21 @@ a:hover {
     margin-right: auto;
 }
 
+/* Séparateur */
 hr {
     border: 0;
     height: 1px;
     background-color: var(--color-medium-navy);
     max-width: 800px;
     margin: 0 auto;
+    opacity: 1; /* Bootstrap rend les hr transparents par défaut */
 }
 
 /* --- Barre de Navigation --- */
 .navbar {
     background-color: var(--color-medium-navy);
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
     box-shadow: 0 4px 6px var(--color-shadow);
+    padding: 15px 5%;
 }
 
 .navbar .logo {
@@ -86,65 +81,49 @@ hr {
     font-weight: 700;
 }
 
-.navbar nav a {
-    margin-left: 25px;
+.navbar .nav-link {
     font-weight: 400;
     font-size: 1.1em;
+    margin-left: 15px;
+}
+
+/* Ajustement du bouton toggler Bootstrap */
+.navbar-toggler {
+    border-color: var(--color-blue-accent);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2874, 184, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* --- Section Héro (Accueil) --- */
 .hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    min-height: 100vh; /* Utilisez min-height pour ne pas écraser le contenu */
     background-color: var(--color-dark-navy);
-    padding-top: 0;
 }
 
 .hero-content h1 {
     font-size: 4em;
-    margin-bottom: 10px;
     font-weight: 700;
+    color: var(--color-text-light);
 }
 
 .hero-content .subtitle {
     font-size: 1.5em;
     color: var(--color-text-fade);
-    margin-bottom: 40px;
 }
 
 /* --- Section À Propos --- */
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
 .profile-pic {
     width: 250px;
     height: 250px;
-    border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--color-blue-accent);
     box-shadow: 0 0 20px rgba(74, 184, 255, 0.6);
 }
 
-.text-block {
-    flex-grow: 1;
-}
-
 .text-block p {
-    margin-bottom: 20px;
     color: var(--color-text-fade);
-}
-
-.about-links {
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
 }
 
 .cv-info {
@@ -155,35 +134,24 @@ hr {
 }
 
 /* --- Section Compétences --- */
-.skills-category {
-    margin-bottom: 40px;
-}
-
 .skills-category h3 {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
     color: var(--color-text-light);
+    font-size: 1.8em;
 }
 
 .skills-category h3 i {
     color: var(--color-blue-accent);
-    margin-right: 10px;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
-    text-align: center;
 }
 
 .skill-item {
     background-color: var(--color-medium-navy);
-    padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     border: 1px solid var(--color-medium-navy);
+    display: flex; /* Flexbox pour centrer contenu */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .skill-item:hover {
@@ -195,24 +163,15 @@ hr {
 .skill-icon {
     font-size: 3em;
     color: var(--color-blue-accent);
-    margin-bottom: 10px;
 }
 
 /* --- Section Projets --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-}
-
 .project-card {
     background-color: var(--color-medium-navy);
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 8px 15px var(--color-shadow);
     transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
+    border: none; /* Supprime la bordure par défaut de Bootstrap */
 }
 
 .project-card:hover {
@@ -221,15 +180,8 @@ hr {
 }
 
 .project-card img {
-    width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
-}
-
-.project-content {
-    padding: 20px;
-    flex-grow: 1;
 }
 
 .project-content h3 {
@@ -239,21 +191,22 @@ hr {
 .project-subtitle {
     font-style: italic;
     color: var(--color-text-fade);
-    margin-top: 5px;
-    margin-bottom: 15px;
     font-size: 0.9em;
+}
+
+.project-content p,
+.project-content li {
+    color: var(--color-text-fade);
 }
 
 .project-content ul {
     list-style-type: none;
     padding-left: 0;
-    margin-top: 15px;
 }
 
 .project-content li {
     position: relative;
     padding-left: 20px;
-    color: var(--color-text-fade);
     margin-bottom: 5px;
 }
 
@@ -268,12 +221,8 @@ hr {
 }
 
 .project-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
     background-color: var(--color-dark-navy);
-    min-height: 50px; /* Assure une hauteur minimale */
+    min-height: 50px;
 }
 
 .project-info-text {
@@ -283,31 +232,23 @@ hr {
 }
 
 /* --- Section Contact --- */
-.contact-section {
-    text-align: center;
-}
-
 .contact-text {
-    max-width: 600px;
-    margin: 0 auto 40px;
     color: var(--color-text-fade);
 }
 
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
 .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     font-size: 1.2em;
     font-weight: 600;
-    /* Rendre les items non-cliquables pour les téléphones/emails sans balise <a> */
-    color: var(--color-text-light); 
+    /* Styles spécifiques pour le bouton Bootstrap */
+    color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+    background-color: transparent;
+}
+
+.contact-item:hover {
+    color: var(--color-medium-navy) !important;
+    background-color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
 }
 
 .contact-item i {
@@ -315,53 +256,23 @@ hr {
     color: var(--color-blue-accent);
 }
 
+.contact-item:hover i {
+    color: var(--color-medium-navy);
+}
+
 /* --- Pied de Page --- */
 footer {
-    text-align: center;
-    padding: 20px;
     background-color: var(--color-medium-navy);
     color: var(--color-text-fade);
     border-top: 1px solid var(--color-dark-navy);
 }
 
-/* --- Media Queries pour le Responsive Design --- */
+/* Media Queries Bootstrap (les classes B5 gèrent le reste) */
 @media (max-width: 768px) {
-    .section {
-        padding: 60px 5%;
-    }
     .hero-content h1 {
         font-size: 2.5em;
     }
     .hero-content .subtitle {
         font-size: 1.2em;
-    }
-
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-    .profile-pic {
-        margin-bottom: 30px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar nav {
-        margin-top: 10px;
-    }
-
-    .navbar nav a {
-        margin-left: 0;
-        margin-right: 15px;
-    }
-
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
     }
 }
