@@ -1,328 +1,202 @@
-
 :root {
-    /* Couleurs de base */
-    --color-dark-navy: #1A2430;
-    --color-medium-navy: #263240;
-    --color-blue-accent: #4AB8FF;
-    --color-blue-dark: #33A3E6;
-    --color-text-light: #F0F4F8;
-    --color-text-fade: #AAB9C4;
-    --color-shadow: rgba(0, 0, 0, 0.7);
-    --color-shadow-light: rgba(74, 184, 255, 0.4);
+  --bg-dark: #0f172a;
+  --bg-medium: #1e293b;
+  --accent: #4ab8ff;
+  --text-light: #f8fafc;
+  --text-fade: #94a3b8;
+  --shadow: rgba(0, 0, 0, 0.4);
 }
 
-/* Base et Reset (MOBILE-FIRST) */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* Optimisation de la performance mobile */
-    will-change: transform, opacity; 
-}
-
-html {
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--color-dark-navy);
-    color: var(--color-text-light);
-    line-height: 1.6;
-    overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Espacement Global (plus compact sur mobile) */
 main {
-    padding-top: 65px; /* Ajustement précis pour la navbar mobile */
+  padding-top: 90px;
 }
 
-.section-title {
-    font-size: 1.8rem; /* Titre plus compact pour mobile */
-    color: var(--color-blue-accent);
-    display: inline-block; 
-    padding-bottom: 5px;
-    border-bottom: 3px solid var(--color-blue-accent);
-    font-weight: 700;
+/* Navbar */
+.glass-nav {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-section:not(:last-of-type) {
-    border-bottom: 1px solid var(--color-medium-navy);
+.navbar .logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: var(--accent);
 }
 
-/* --- Barre de Navigation (MOBILE) --- */
-.nav-enhanced {
-    background-color: var(--color-medium-navy);
-    box-shadow: 0 4px 10px var(--color-shadow);
-    padding: 8px 3%; 
-}
-
-.navbar-brand {
-    font-size: 1.3em;
-    font-weight: 700;
-    color: var(--color-text-light) !important;
-}
-
-.logo-icon {
-    font-size: 1.1em;
-    color: var(--color-blue-accent);
-}
-
-/* Menu Burger ouvert (s'applique lorsque la navbar est effondrée) */
-#navbarNav {
-    text-align: center;
-    padding-top: 10px;
-    background-color: var(--color-medium-navy);
-    box-shadow: 0 8px 10px var(--color-shadow);
+.navbar .logo span {
+  color: var(--text-light);
 }
 
 .nav-link {
-    color: var(--color-text-fade) !important;
-    font-weight: 500;
-    position: relative;
-    padding-bottom: 5px !important;
-    margin-bottom: 5px;
+  color: var(--text-light) !important;
+  margin-left: 20px;
+  transition: color 0.3s;
 }
 
-/* Animation des liens */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: var(--color-blue-accent);
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 80%; /* Ligne plus courte sur mobile */
-    left: 10%;
-}
-.nav-link.active {
-    color: var(--color-blue-accent) !important;
-    font-weight: 600;
+.nav-link:hover {
+  color: var(--accent) !important;
 }
 
-/* --- Section Héro (MOBILE) --- */
+/* Hero */
 .hero {
-    min-height: 100vh;
-    padding-top: 15vh; /* Ajustement vertical */
-    padding-bottom: 10vh;
-    background: linear-gradient(-45deg, var(--color-dark-navy), var(--color-medium-navy), var(--color-dark-navy));
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 20% 20%, #1e293b, #0f172a);
+  text-align: center;
 }
 
-.hero-content h1 {
-    font-size: 2.5em; /* Taille H1 parfaite pour mobile */
-    line-height: 1.2;
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
 }
 
-.hero-content .subtitle {
-    font-size: 1.2em !important;
-    margin-bottom: 2rem !important;
+.hero .highlight {
+  color: var(--accent);
 }
 
-.dynamic-text {
-    /* Maintien de l'effet de frappe */
-    border-right: 3px solid var(--color-blue-accent);
-    white-space: nowrap;
-    overflow: hidden;
-    animation: blink-caret .75s step-end infinite;
+.hero .subtitle {
+  color: var(--text-fade);
+  margin-bottom: 20px;
 }
 
-.hero-btns .btn {
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    width: 100%; 
-    display: block;
-    margin-bottom: 10px !important;
+.btn-primary {
+  background-color: var(--accent);
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 50px;
 }
 
-/* --- Section À Propos (MOBILE) --- */
+.btn-primary:hover {
+  background-color: #339ddf;
+}
+
+/* Sections */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* About */
 .profile-pic {
-    width: 180px; /* Taille réduite pour l'harmonie mobile */
-    height: 180px;
-    border: 4px solid var(--color-blue-accent);
-    box-shadow: 0 0 20px rgba(74, 184, 255, 0.5);
-    /* Les animations lourdes sont désactivées ici et activées sur PC */
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 20px rgba(74, 184, 255, 0.5);
 }
 
-.text-block p {
-    font-size: 1em !important; 
-    color: var(--color-text-fade);
+/* Skills */
+.skill-card {
+  background: rgba(30, 41, 59, 0.8);
+  padding: 30px;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* --- Section Compétences (MOBILE) --- */
-.skills-category h3 {
-    font-size: 1.4em;
-    border-left: 3px solid var(--color-blue-accent);
-    padding-left: 10px;
-}
-.skill-item {
-    background-color: rgba(38, 50, 64, 0.4);
-    border-radius: 12px;
-    padding: 15px; /* Réduction du padding */
-    backdrop-filter: blur(8px);
-    transition: none; /* AUCUNE TRANSITION sur mobile */
-}
-.skill-icon {
-    font-size: 3em;
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px var(--shadow);
 }
 
-/* --- Section Projets (MOBILE) --- */
+.skill-card i {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+/* Projects */
 .project-card {
-    background-color: rgba(38, 50, 64, 0.4);
-    border-radius: 15px;
-    backdrop-filter: blur(8px);
-    transition: none; /* AUCUNE TRANSITION sur mobile */
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px var(--shadow);
+}
+
 .project-card img {
-    height: 160px; /* Hauteur très compacte pour mobile */
-    object-fit: cover;
-}
-.project-content h3 {
-    font-size: 1.3em;
-    padding-left: 10px;
-}
-.project-content li {
-    font-size: 0.9em;
-}
-.project-link {
-    padding: 10px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
-/* --- Section Contact (MOBILE) --- */
-.contact-info {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.contact-item {
-    font-size: 1em;
-    padding: 15px !important;
-    border-radius: 10px;
-    /* L'animation de fond est légère et rapide, on la garde */
-}
-.contact-item span {
-    font-size: 0.9em;
-    word-break: break-all; /* Essentiel pour les emails très longs */
-}
-.contact-icon {
-    font-size: 2em;
+.project-card h3 {
+  color: var(--accent);
+  margin-top: 10px;
 }
 
-/* --- Pied de Page --- */
+/* Contact */
+#contact {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.btn-outline-light {
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-weight: 600;
+}
+
+.btn-outline-light:hover {
+  background: var(--accent);
+  color: var(--bg-dark) !important;
+}
+
+/* Footer */
 footer {
-    padding: 15px 0;
-    font-size: 0.8em;
+  background: #1e293b;
+  color: var(--text-fade);
+  font-size: 0.9rem;
 }
 
-
-/* ======================================= */
-/* MEDIA QUERY: OPTIMISATION TABLETTE ET PC */
-/* min-width: 768px (MD - Desktop) */
-/* ======================================= */
-@media (min-width: 768px) {
-    main {
-        padding-top: 80px;
-    }
-    
-    /* Titres et Général */
-    .section-title {
-        font-size: 2.5rem; /* Retour à la taille PC */
-    }
-    section {
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-    
-    /* Navbar */
-    .nav-enhanced {
-        padding: 15px 5%;
-    }
-    .navbar-brand {
-        font-size: 1.6em;
-    }
-    .nav-link {
-        margin-left: 15px;
-    }
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 100%; /* Ligne complète sur PC */
-        left: 0;
-    }
-
-    /* Hero */
-    .hero-content h1 {
-        font-size: 4.5em; 
-    }
-    .hero-content .subtitle {
-        font-size: 1.5em !important;
-    }
-    .hero-btns .btn {
-        width: auto;
-        display: inline-block;
-        padding: 14px 35px;
-        font-size: 1.15rem;
-    }
-    
-    /* À Propos */
-    .profile-pic {
-        width: 280px; 
-        height: 280px;
-        border: 6px solid var(--color-blue-accent);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Animation PC */
-    }
-    .profile-pic:hover {
-        transform: rotate(3deg) scale(1.03); /* Réactivation de l'animation PC */
-    }
-
-    /* Compétences */
-    .skills-category h3 {
-        font-size: 1.8em;
-    }
-    .skill-item {
-        padding: 20px;
-        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.4s;
-    }
-    .skill-item:hover {
-        transform: translateY(-10px); /* Réactivation de l'effet 3D */
-        box-shadow: 0 20px 40px var(--color-shadow), 0 0 15px var(--color-blue-accent);
-        border: 1px solid var(--color-blue-accent);
-    }
-    
-    /* Projets */
-    .project-card {
-        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.4s;
-    }
-    .project-card:hover {
-        transform: translateY(-10px);
-    }
-    .project-card img {
-        height: 250px;
-        transition: transform 5s cubic-bezier(0.2, 0.8, 0.4, 1);
-    }
-    .project-card:hover img {
-        transform: scale(1.05) rotate(1deg);
-    }
-    
-    /* Contact */
-    .contact-item {
-        font-size: 1.1rem;
-        padding: 20px !important;
-    }
-    .contact-icon {
-        font-size: 2.5em;
-    }
-    .contact-item span {
-        font-size: 1em;
-        word-break: normal;
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+  }
+  .skill-card {
+    padding: 20px;
+  }
 }
