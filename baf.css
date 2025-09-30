@@ -8,11 +8,7 @@
 }
 
 /* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -22,14 +18,12 @@ body {
   line-height: 1.6;
 }
 
-main {
-  padding-top: 90px;
-}
+main { padding-top: 90px; }
 
 /* Navbar */
 .glass-nav {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -37,20 +31,35 @@ main {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   color: var(--accent);
+  font-size: 1.5rem;
 }
 
-.navbar .logo span {
-  color: var(--text-light);
-}
+.navbar .logo span { color: var(--text-light); }
 
 .nav-link {
   color: var(--text-light) !important;
   margin-left: 20px;
+  font-weight: 600;
+  position: relative;
   transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+  margin: auto;
 }
 
 .nav-link:hover {
   color: var(--accent) !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 /* Hero */
@@ -67,9 +76,7 @@ main {
   font-size: 3rem;
 }
 
-.hero .highlight {
-  color: var(--accent);
-}
+.hero .highlight { color: var(--accent); }
 
 .hero .subtitle {
   color: var(--text-fade);
@@ -84,9 +91,7 @@ main {
   border-radius: 50px;
 }
 
-.btn-primary:hover {
-  background-color: #339ddf;
-}
+.btn-primary:hover { background-color: #339ddf; }
 
 /* Sections */
 .section-title {
@@ -106,6 +111,13 @@ main {
   background: var(--accent);
   margin: 10px auto 0;
   border-radius: 2px;
+}
+
+.skills-subtitle {
+  color: var(--text-light);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 40px;
 }
 
 /* About */
@@ -166,9 +178,7 @@ main {
 }
 
 /* Contact */
-#contact {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-}
+#contact { background: linear-gradient(135deg, #1e293b, #0f172a); }
 
 .btn-outline-light {
   border-radius: 50px;
@@ -190,13 +200,9 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .hero .subtitle {
-    font-size: 1rem;
-  }
-  .skill-card {
-    padding: 20px;
-  }
+  .hero h1 { font-size: 2.2rem; }
+  .hero .subtitle { font-size: 1rem; }
+  .skill-card { padding: 20px; }
 }
+
+
