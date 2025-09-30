@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -89,19 +87,19 @@
                     <h3 class="text-center mb-4"><i class="fas fa-network-wired me-2"></i> Systèmes & Réseaux</h3>
                     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 text-center justify-content-center">
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fab fa-linux skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Linux & Bash</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fas fa-server skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Administration Réseaux</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fas fa-cloud skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Virtualisation</p>
                             </div>
@@ -113,37 +111,37 @@
                     <h3 class="text-center mb-4"><i class="fas fa-code me-2"></i> Développement & Bases de Données</h3>
                     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 text-center justify-content-center">
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fab fa-html5 skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">HTML5 & CSS3</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fab fa-js-square skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">JavaScript</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fab fa-python skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Python</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fas fa-cogs skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Langage C</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fas fa-desktop skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">Qt (C++)</p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="skill-item h-100 p-4">
+                            <div class="skill-item h-100 p-3">
                                 <i class="fas fa-database skill-icon mb-2"></i>
                                 <p class="mb-0 fw-medium">MySQL</p>
                             </div>
@@ -248,7 +246,6 @@
                     index++;
                     setTimeout(typeWriter, 70);
                 } else {
-                    // Supprime le curseur après que le texte soit complet
                     textElement.style.borderRight = 'none'; 
                 }
             }
@@ -263,8 +260,8 @@
             let current = '';
             
             sections.forEach(section => {
-                // Diminution de l'offset pour une activation plus rapide sur mobile
-                const sectionTop = section.offsetTop - 70; 
+                // Offset très faible (60px) pour prioriser l'activation mobile
+                const sectionTop = section.offsetTop - 60; 
                 const sectionHeight = section.clientHeight;
                 if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
@@ -281,4 +278,3 @@
     </script>
 </body>
 </html>
-
