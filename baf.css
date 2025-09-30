@@ -1,139 +1,313 @@
 :root {
-  --color-dark-navy: #1A2430;
-  --color-medium-navy: #263240;
-  --color-blue-accent: #4AB8FF;
-  --color-text-light: #F0F4F8;
-  --color-text-fade: #AAB9C4;
-  --color-shadow: rgba(0, 0, 0, 0.4);
+    /* Couleurs de base */
+    --color-dark-navy: #1A2430;
+    --color-medium-navy: #263240;
+    --color-blue-accent: #4AB8FF;
+    --color-text-light: #F0F4F8;
+    --color-text-fade: #AAB9C4;
+    --color-shadow: rgba(0, 0, 0, 0.6); /* Assombri pour meilleur contraste */
+    --color-shadow-light: rgba(74, 184, 255, 0.2); /* Ombre de l'accent */
 }
 
-/* Reset */
+/* Base et Typographie */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--color-dark-navy);
-  color: var(--color-text-light);
-  line-height: 1.6;
-  overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-dark-navy);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Navbar */
-.navbar {
-  background-color: var(--color-medium-navy);
-}
-.nav-link {
-  color: var(--color-blue-accent) !important;
-}
-.nav-link:hover {
-  color: var(--color-text-light) !important;
+main {
+    padding-top: 80px; 
 }
 
-/* Hero */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(-45deg, #1A2430, #263240, #4AB8FF, #1A2430);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-.gradient-text {
-  background: linear-gradient(90deg, #4AB8FF, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hero-btns .btn {
-  border-radius: 30px;
-  padding: 12px 30px;
+/* --- Styles Généralisés --- */
+.text-fade-lighter {
+    color: var(--color-text-fade);
+    opacity: 0.8;
 }
 
-/* Section Title */
+/* Styles des liens Bootstrap pour conserver la couleur accent */
+.navbar-brand,
+.nav-link,
+a {
+    color: var(--color-blue-accent); /* Rendu optionnel car le !important est souvent requis sur Bootstrap */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Boutons primaires (pour les CTA) */
+.btn-primary {
+    background-color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #33A3E6; /* Légèrement plus foncé */
+    border-color: #33A3E6;
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+    font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+    color: var(--color-dark-navy) !important;
+    background-color: var(--color-blue-accent);
+    border-color: var(--color-blue-accent);
+}
+
+/* Styles des titres de section */
 .section-title {
-  font-size: 2.5rem;
-  color: var(--color-blue-accent);
-  border-bottom: 3px solid var(--color-blue-accent);
-  display: inline-block;
-  padding-bottom: 5px;
+    font-size: 2.5rem;
+    color: var(--color-blue-accent);
+    display: inline-block; 
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--color-blue-accent);
+    font-weight: 700;
 }
 
-/* Profile */
+/* Séparateur */
+section:not(:last-of-type) {
+    border-bottom: 1px solid var(--color-medium-navy);
+}
+
+/* --- Barre de Navigation --- */
+.navbar {
+    background-color: var(--color-medium-navy);
+    box-shadow: 0 4px 10px var(--color-shadow);
+}
+
+.navbar .nav-link {
+    color: var(--color-blue-accent) !important;
+    font-weight: 500;
+    font-size: 1.05em;
+    margin-left: 15px;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-text-light) !important;
+}
+
+/* --- Section Héro (Accueil) --- */
+.hero {
+    min-height: 100vh;
+    /* Animation de fond pour un look sophistiqué */
+    background: linear-gradient(-45deg, var(--color-dark-navy), var(--color-medium-navy), var(--color-dark-navy));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.hero-content h1 {
+    font-size: 4.5em; /* Un peu plus grand */
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.gradient-text {
+    /* Effet de texte dégradé */
+    background: linear-gradient(90deg, var(--color-blue-accent), var(--color-text-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.dynamic-text {
+    color: var(--color-blue-accent);
+    min-height: 1.2em; /* Pour éviter le saut de mise en page pendant l'effet de frappe */
+}
+
+.hero-btns .btn {
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    /* Légère élévation */
+    box-shadow: 0 4px 10px var(--color-shadow-light); 
+}
+
+/* --- Section À Propos --- */
 .profile-pic {
-  width: 250px;
-  height: 250px;
-  border: 5px solid var(--color-blue-accent);
-  box-shadow: 0 0 20px rgba(74, 184, 255, 0.6);
-  object-fit: cover;
+    width: 280px; /* Légèrement agrandi */
+    height: 280px;
+    object-fit: cover;
+    border: 6px solid var(--color-blue-accent);
+    box-shadow: 0 0 30px var(--color-shadow-light);
+    transition: transform 0.5s;
 }
 
-/* Skills */
+.profile-pic:hover {
+    transform: scale(1.03);
+}
+
+.text-block p {
+    color: var(--color-text-fade);
+    line-height: 1.8;
+}
+
+/* --- Section Compétences --- */
+.skills-category h3 {
+    color: var(--color-text-light);
+    font-size: 1.8em;
+    border-left: 3px solid var(--color-blue-accent);
+    padding-left: 15px;
+    display: inline-block;
+}
+
+.skills-category h3 i {
+    color: var(--color-blue-accent);
+}
+
 .skill-item {
-  background: var(--color-medium-navy);
-  border-radius: 12px;
-  padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
+    background-color: rgba(38, 50, 64, 0.6); /* Utilisation d'un rgba pour le glassmorphism */
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 1px solid rgba(74, 184, 255, 0.1);
+    backdrop-filter: blur(8px); /* L'effet Glassmorphism */
 }
+
 .skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--color-shadow);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px var(--color-shadow);
+    border: 1px solid var(--color-blue-accent);
 }
+
 .skill-icon {
-  font-size: 2.5rem;
-  color: var(--color-blue-accent);
+    font-size: 3.5em; /* Agrandissement des icônes */
+    color: var(--color-blue-accent);
 }
 
-/* Projects */
+/* --- Section Projets --- */
 .project-card {
-  background: rgba(38, 50, 64, 0.8);
-  border-radius: 15px;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s, box-shadow 0.3s;
+    background-color: rgba(38, 50, 64, 0.6); /* Fond semi-transparent */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px var(--color-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(74, 184, 255, 0.1);
+    backdrop-filter: blur(8px); /* L'effet Glassmorphism */
+    overflow: hidden; /* Assure que l'image reste dans les bords */
 }
+
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 30px var(--color-shadow);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 40px var(--color-shadow);
 }
+
 .project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    height: 250px; /* Augmenter la hauteur de l'image */
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 5s ease-out; /* Effet de zoom subtil au survol */
 }
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-content h3 {
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    border-left: 3px solid var(--color-blue-accent);
+    padding-left: 10px;
+}
+
 .project-subtitle {
-  color: var(--color-text-fade);
-  font-style: italic;
-  margin-bottom: 10px;
-}
-.project-card ul {
-  padding-left: 20px;
-  color: var(--color-text-fade);
+    font-style: italic;
+    color: var(--color-text-fade);
+    font-size: 0.9em;
 }
 
-/* Contact */
-.contact-form input,
-.contact-form textarea {
-  background: var(--color-medium-navy);
-  border: 1px solid var(--color-blue-accent);
-  color: var(--color-text-light);
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: var(--color-text-fade);
+.project-content ul {
+    padding-left: 0;
 }
 
-/* Footer */
+.project-content li {
+    color: var(--color-text-fade);
+    padding-left: 0;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.project-content li i {
+    color: var(--color-blue-accent);
+}
+
+.project-link {
+    background-color: var(--color-medium-navy);
+    border-top: 1px solid rgba(74, 184, 255, 0.1);
+    padding: 15px;
+}
+
+/* --- Section Contact --- */
+.contact-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+
+.contact-item i {
+    font-size: 2em; /* Icônes plus grandes pour le contact */
+    color: var(--color-blue-accent);
+    flex-shrink: 0; 
+}
+
+.contact-item span {
+    word-break: break-word; 
+    font-size: 1em;
+}
+
+.contact-item:hover i {
+    color: var(--color-medium-navy);
+}
+
+/* --- Pied de Page --- */
 footer {
-  background: var(--color-medium-navy);
-  color: var(--color-text-fade);
-  border-top: 1px solid var(--color-dark-navy);
+    background-color: var(--color-medium-navy);
+    color: var(--color-text-fade);
+    border-top: 1px solid var(--color-dark-navy);
+}
+
+/* Media Queries pour la Responsivité */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+}
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-content .subtitle {
+        font-size: 1.3em;
+    }
+    .hero-btns .btn {
+        width: 100%;
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
 }
